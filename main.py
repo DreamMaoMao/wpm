@@ -10,8 +10,7 @@ from base import BaseWidget
 from power import PowerOperations
 import datetime
 import psutil
-
-style_path = ""
+from style import style
 
 class BaseStyledWidget(QWidget):
     def apply_stylesheet(self, path):
@@ -53,12 +52,11 @@ class AnimatedWidget(QWidget):
 
 class OverlayWidget(BaseStyledWidget,AnimatedWidget):
     def __init__(self, animation_duration,uptime):
-        global style_path
         super().__init__(animation_duration)
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.Tool)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        if uptime:
-            self.boot_time(style_path)
+        # if uptime:
+        #     self.boot_time(style_path)
             
  
     def update_geometry(self, screen_geometry):
@@ -143,7 +141,6 @@ class PowerMenuWidget(BaseWidget):
 
 class MainWindow(BaseStyledWidget,AnimatedWidget):
     def __init__(self, parent_button, uptime,blur, blur_background, animation_duration, button_row, buttons):
-        global style_path
         super(MainWindow, self).__init__(animation_duration)
 
         self.overlay = OverlayWidget(animation_duration,uptime)
@@ -209,7 +206,7 @@ class MainWindow(BaseStyledWidget,AnimatedWidget):
         main_layout.addLayout(button_layout3)
         main_layout.addLayout(button_layout4)
         self.setLayout(main_layout)
-        self.apply_stylesheet(style_path)
+        self.setStyleSheet(style)
         self.adjustSize()
         self.center_on_screen()
 
@@ -319,8 +316,7 @@ if __name__ == '__main__':
         button_row=5,  # 假设每行显示3个按钮
         buttons=buttons  # 传递按钮配置
     )
-    style_path = sys.argv[1]
-    
+        
     # 设置窗口位置和大小
     # power_menu_widget.setGeometry(100, 100, 200, 50)  # x, y, width, height
     power_menu_widget.show_main_window()  # 显示窗口
