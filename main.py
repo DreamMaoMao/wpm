@@ -300,29 +300,29 @@ if __name__ == '__main__':
 
     # 假设这些是您的按钮配置，您可以根据需要调整它们
     buttons = {
-        "shutdown": ["\uf011", "Shutdown"],
         "restart": ["\uead2", "Restart"],
         "signout": ["\udb80\udf43", "Sign Out"],
         "lock": ["\uea75", "Lock"],
         "sleep": ["\u23fe", "Sleep"],
         "hibernate": ["\uf28e", "hibernate"],
+        "shutdown": ["\uf011", "Shutdown"],
         "cancel": ["\udb81\udf3a", "Cancel"],
     }
     
     # 创建PowerMenuWidget实例
     power_menu_widget = PowerMenuWidget(
         label="",  # 假设这是您想要显示的标签
-        uptime=True,  # 假设您想要显示uptime
+        uptime=False,  # 假设您想要显示uptime
         blur=True,  # 假设您想要模糊背景
         blur_background=True,  # 假设您想要模糊overlay
-        animation_duration=300,  # 假设动画持续时间为300毫秒
-        button_row=4,  # 假设每行显示3个按钮
+        animation_duration=10,  # 假设动画持续时间为300毫秒
+        button_row=5,  # 假设每行显示3个按钮
         buttons=buttons  # 传递按钮配置
     )
     style_path = sys.argv[1]
     
     # 设置窗口位置和大小
-    power_menu_widget.setGeometry(100, 100, 200, 50)  # x, y, width, height
+    # power_menu_widget.setGeometry(100, 100, 200, 50)  # x, y, width, height
     power_menu_widget.show_main_window()  # 显示窗口
 
     # 运行应用
