@@ -301,7 +301,7 @@ if __name__ == '__main__':
         "signout": ["\udb80\udf43", "Sign Out"],
         "lock": ["\uea75", "Lock"],
         "sleep": ["\u23fe", "Sleep"],
-        "hibernate": ["\uf28e", "hibernate"],
+        "hibernate": ["\uf28e", "Hibernate"],
         "shutdown": ["\uf011", "Shutdown"],
         "cancel": ["\udb81\udf3a", "Cancel"],
     }
@@ -312,7 +312,7 @@ if __name__ == '__main__':
         uptime=False,  # 假设您想要显示uptime
         blur=True,  # 假设您想要模糊背景
         blur_background=True,  # 假设您想要模糊overlay
-        animation_duration=10,  # 假设动画持续时间为300毫秒
+        animation_duration=200,  # 假设动画持续时间为300毫秒
         button_row=5,  # 假设每行显示3个按钮
         buttons=buttons  # 传递按钮配置
     )
